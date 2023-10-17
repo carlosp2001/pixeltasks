@@ -24,6 +24,7 @@ export default class App extends Vue {
 }
 </script>
 <style lang="stylus">
+@import url('https://fonts.googleapis.com/css2?family=Baskervville&display=swap');
   body
     margin 0
   #app
@@ -47,12 +48,6 @@ export default class App extends Vue {
     width 75%
     margin-bottom 170px
   .sidebar-menu
-    background-color #42b983
     width 100%
     height 200px
-  .menu-item
-    background-color #FDB713
-    width 100%
-    height 50%
-    border-radius 15px
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar">
-    <img src="../assets/pixellogo.png" alt="pixel-logo" class="pixel-logo-img">
+    <img src="../../assets/pixellogo.png" alt="pixel-logo" class="pixel-logo-img">
     <SidebarMenu/>
   </div>
 </template>

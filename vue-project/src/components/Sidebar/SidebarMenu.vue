@@ -8,7 +8,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import MenuItem from './MenuItem.vue';
+import MenuItem from '../MenuItem.vue';
 
 @Component({
   components: {

@@ -10,7 +10,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import Counter from './components/Counter.vue';
 import CounterByTen from './components/CounterByTen.vue';
-import Sidebar from './components/Sidebar.vue';
+import Sidebar from './components/Sidebar/Sidebar.vue';
 
 @Component({
   components: {
@@ -24,7 +24,7 @@ export default class App extends Vue {
 }
 </script>
 <style lang="stylus">
-@import url('https://fonts.googleapis.com/css2?family=Baskervville&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo&family=Baskervville&display=swap');
   body
     margin 0
   #app

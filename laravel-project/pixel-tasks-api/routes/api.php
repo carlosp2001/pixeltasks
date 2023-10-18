@@ -14,7 +14,6 @@ use App\Http\Controllers\TaskController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
 Route::get('task/latest', [TaskController::class, 'latest']);
 Route::resource('task', TaskController::class);
 

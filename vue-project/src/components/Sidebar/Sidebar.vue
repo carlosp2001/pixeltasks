@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import Component, { mixins } from 'vue-class-component';
+import Component from 'vue-class-component';
 import SidebarMenu from './SidebarMenu.vue';
 
 @Component({
@@ -19,3 +19,9 @@ export default class Sidebar extends Vue {
 
 }
 </script>
+
+<style lang="stylus">
+.sidebar
+  grid-area sidebar
+  background #FAF9F9
+</style>

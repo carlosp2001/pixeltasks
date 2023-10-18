@@ -2,6 +2,7 @@
   <div id="app">
     <div class="container">
       <Sidebar />
+      <Header />
     </div>
   </div>
 </template>
@@ -11,12 +12,14 @@ import { Component, Vue } from 'vue-property-decorator';
 import Counter from './components/Counter.vue';
 import CounterByTen from './components/CounterByTen.vue';
 import Sidebar from './components/Sidebar/Sidebar.vue';
+import Header from './components/Header/Header.vue';
 
 @Component({
   components: {
     Counter,
     CounterByTen,
     Sidebar,
+    Header,
   },
 })
 export default class App extends Vue {
@@ -37,12 +40,9 @@ export default class App extends Vue {
   .container
     background #FFFFFF
     display grid
-    grid-template-rows 540px 540px
+    grid-template-rows repeat(4, 400px)
     grid-template-columns repeat(4, 1fr)
-    grid-template-areas: "sidebar . . .""sidebar . . ."
-  .sidebar
-    grid-area sidebar
-    background #FAF9F9
+    grid-template-areas: "sidebar header header header""sidebar . . .""sidebar . . .""sidebar . . ."
   .pixel-logo-img
     margin-top 50px
     width 75%

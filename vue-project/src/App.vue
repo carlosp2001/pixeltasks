@@ -3,6 +3,7 @@
     <div class="container">
       <Sidebar />
       <Header />
+      <TaskContent />
     </div>
   </div>
 </template>
@@ -13,6 +14,7 @@ import Counter from './components/Counter.vue';
 import CounterByTen from './components/CounterByTen.vue';
 import Sidebar from './components/Sidebar/Sidebar.vue';
 import Header from './components/Header/Header.vue';
+import TaskContent from './components/TaskContent/TaskContent.vue';
 
 @Component({
   components: {
@@ -20,6 +22,7 @@ import Header from './components/Header/Header.vue';
     CounterByTen,
     Sidebar,
     Header,
+    TaskContent
   },
 })
 export default class App extends Vue {
@@ -40,9 +43,9 @@ export default class App extends Vue {
   .container
     background #FFFFFF
     display grid
-    grid-template-rows repeat(4, 400px)
+    grid-template-rows repeat(4, 1fr)
     grid-template-columns repeat(4, 1fr)
-    grid-template-areas: "sidebar header header header""sidebar . . .""sidebar . . .""sidebar . . ."
+    grid-template-areas: "sidebar header header header""sidebar task-content task-content task-content""sidebar task-content task-content task-content""sidebar task-content task-content task-content"
   .pixel-logo-img
     margin-top 50px
     width 75%

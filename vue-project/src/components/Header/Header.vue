@@ -1,13 +1,14 @@
 <template>
   <div class="header">
     <div class="welcome_message">
-      Hola Carlos!
+      Hola!
     </div>
     <div class="pending_tasks_message">
-      Tienes 3 tareas pendientes
+      Tienes {{ tasksAmount }} tareas pendientes
     </div>
     <div class="input_container">
-      <input type="text" name="task-input" id="task-input" placeholder="¿Qué tarea estás pensando hacer?">
+      <input type="text" name="task-input" id="task-input" placeholder="¿Qué
+tarea estás pensando hacer?">
       <img src="../../assets/button.svg">
     </div>
   </div>
@@ -16,13 +17,14 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
 
 @Component({
   components: {
   },
 })
 export default class Header extends Vue {
-
+  @Prop() tasksAmount!: string;
 }
 </script>
 

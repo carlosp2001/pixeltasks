@@ -2,13 +2,14 @@
   <div id="app">
     <div class="container">
       <Sidebar />
-      <Header />
-      <TaskContent />
+      <Header :tasks-amount="tasks.length.toString()"/>
+      <TaskContent :items="tasks" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import axios from 'axios';
 import { Component, Vue } from 'vue-property-decorator';
 import Counter from './components/Counter.vue';
 import CounterByTen from './components/CounterByTen.vue';
@@ -22,11 +23,26 @@ import TaskContent from './components/TaskContent/TaskContent.vue';
     CounterByTen,
     Sidebar,
     Header,
-    TaskContent
+    TaskContent,
   },
 })
 export default class App extends Vue {
+  private tasks: any[] = [];
 
+  created() {
+    this.getTasks();
+  }
+
+  private getTasks() {
+    axios.get('http://127.0.0.1:8000/api/task')
+      .then((response) => {
+        // Almacena las tareas obtenidas en la variable tareas
+        this.tasks = response.data;
+      })
+      .catch((error) => {
+        console.error('Error al obtener las tareas', error);
+      });
+  }
 }
 </script>
 <style lang="stylus">
@@ -45,7 +61,11 @@ export default class App extends Vue {
     display grid
     grid-template-rows repeat(4, 1fr)
     grid-template-columns repeat(4, 1fr)
-    grid-template-areas: "sidebar header header header""sidebar task-content task-content task-content""sidebar task-content task-content task-content""sidebar task-content task-content task-content"
+    grid-template-areas: \
+      "sidebar header header header" \
+      "sidebar task-content task-content task-content" \
+      "sidebar task-content task-content task-content" \
+      "sidebar task-content task-content task-content"
   .pixel-logo-img
     margin-top 50px
     width 75%

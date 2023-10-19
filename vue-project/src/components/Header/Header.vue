@@ -7,24 +7,39 @@
       Tienes {{ tasksAmount }} tareas pendientes
     </div>
     <div class="input_container">
-      <input type="text" name="task-input" id="task-input" placeholder="¿Qué
-tarea estás pensando hacer?">
-      <img src="../../assets/button.svg">
+      <input type="text" id="task-input" placeholder="¿Qué
+   tarea estás pensando hacer?" v-model="currentInput">
+      <img src="../../assets/button.svg" @click="addNewTask">
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import axios from 'axios';
 import Vue from 'vue';
-import Component from 'vue-class-component';
-import { Prop } from 'vue-property-decorator';
+import { Prop, Component } from 'vue-property-decorator';
 
 @Component({
   components: {
   },
 })
 export default class Header extends Vue {
+  private currentInput = '';
+
   @Prop() tasksAmount!: string;
+
+  @Prop() items!: any[];
+
+  private addNewTask() {
+    console.log(this.currentInput);
+    axios.post(`${process.env.VUE_APP_PROJECT_URL}api/task`, { content: this.currentInput })
+      .then((response) => {
+        console.log(response.data);
+        this.items.push(response.data);
+      }).catch((error) => {
+        console.log(error);
+      });
+  }
 }
 </script>
 

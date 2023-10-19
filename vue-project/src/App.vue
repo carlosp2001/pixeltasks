@@ -2,7 +2,8 @@
   <div id="app">
     <div class="container">
       <Sidebar />
-      <Header :tasks-amount="tasks.length.toString()"/>
+      <Header :tasks-amount="tasks.length.toString()"
+              :new-task="newTask" :items="tasks"/>
       <TaskContent :items="tasks" />
     </div>
   </div>
@@ -29,12 +30,14 @@ import TaskContent from './components/TaskContent/TaskContent.vue';
 export default class App extends Vue {
   private tasks: any[] = [];
 
+  private newTask: string = '';
+
   created() {
     this.getTasks();
   }
 
   private getTasks() {
-    axios.get('http://127.0.0.1:8000/api/task')
+    axios.get(`${process.env.VUE_APP_PROJECT_URL}api/task`)
       .then((response) => {
         // Almacena las tareas obtenidas en la variable tareas
         this.tasks = response.data;

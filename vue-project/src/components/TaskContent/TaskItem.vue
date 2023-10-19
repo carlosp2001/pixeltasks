@@ -3,8 +3,8 @@
     <div class="list-item-text">
       {{ content }}
     </div>
-    <div class="list-item-check-box">
-      <img src="../../assets/check-icon.svg" alt="Check Icon" width="80%">
+    <div class="list-item-check-box" @click="sendRequest">
+      <img v-if="done" src="../../assets/check-icon.svg" alt="Check Icon" width="80%">
     </div>
   </div>
 </template>
@@ -13,6 +13,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
+import axios from 'axios';
 
 @Component({
   components: {
@@ -20,6 +21,20 @@ import { Prop } from 'vue-property-decorator';
 })
 export default class TaskItem extends Vue {
   @Prop() content!:string;
+
+  @Prop() done!:boolean;
+
+  @Prop() myId!:number;
+
+  private sendRequest() {
+    if (this.done) {
+      this.done = false;
+      axios.put(`${process.env.VUE_APP_PROJECT_URL}api/task/${this.myId}/undone`);
+    } else {
+      this.done = true;
+      axios.put(`${process.env.VUE_APP_PROJECT_URL}api/task/${this.myId}/done`);
+    }
+  }
 }
 </script>
 

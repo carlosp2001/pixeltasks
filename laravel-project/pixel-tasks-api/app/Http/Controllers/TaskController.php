@@ -41,4 +41,14 @@ class TaskController extends Controller
         $lastTasks = Task::orderBy('created_at', 'desc')->get();
         return $lastTasks;
     }
+
+    public function done(Task $task) {
+            $task->update(['done' => true]);
+            return $task;
+        }
+
+    public function undone(Task $task) {
+        $task->update(['done' => false]);
+        return $task;
+        }
 }

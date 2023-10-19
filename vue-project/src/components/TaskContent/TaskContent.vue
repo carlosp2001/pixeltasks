@@ -6,7 +6,8 @@
     </div>
     <div class="list-container">
       <TaskItem v-for="task in items" :key="task.id"
-                :content="task.content"/>
+                :content="task.content" :done="task.done"
+                :my-id="parseInt(task.id)"/>
     </div>
 
   </div>
